@@ -12,4 +12,5 @@ public class DetailActivity extends AppCompatActivity {
         // Gestion unique du bouton retour
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
+
 }
