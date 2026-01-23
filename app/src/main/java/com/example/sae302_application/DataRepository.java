@@ -10,7 +10,9 @@ public class DataRepository {
     public static List<Intervention> interventions = new ArrayList<>();
 
     public static void loadFromCsv(Context context) {
-        interventions.clear();
+        if (!interventions.isEmpty()) {
+            return;
+        }
 
         try {
             BufferedReader reader = new BufferedReader(
@@ -20,14 +22,14 @@ public class DataRepository {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 if (parts.length >= 14) {
-                    // Création des objets temporaires (Technicien, Site...)
-                    Technicien t = new Technicien(Integer.parseInt(parts[0]), parts[8], parts[9]);
-                    Site s = new Site(Integer.parseInt(parts[0]), parts[10], parts[11], parts[12], parts[13]);
+                    int id = Integer.parseInt(parts[0]);
+
+                    Technicien t = new Technicien(id, parts[8], parts[9]);
+                    Site s = new Site(id, parts[10], parts[11], parts[12], parts[13]);
 
                     interventions.add(new Intervention(
-                            Integer.parseInt(parts[0]), parts[1], parts[2],
-                            Integer.parseInt(parts[3]), parts[4], parts[5],
-                            parts[6], parts[7], t, s
+                            id, parts[1], parts[2], Integer.parseInt(parts[3]),
+                            parts[4], parts[5], parts[6], parts[7], t, s
                     ));
                 }
             }
