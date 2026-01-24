@@ -24,10 +24,13 @@ public class MainActivity extends AppCompatActivity {
         tvStats = findViewById(R.id.tvStatsTotal);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new InterventionAdapter(new ArrayList<>(), item -> {
-            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-            intent.putExtra("ID", item.id);
-            startActivity(intent);
+        adapter = new InterventionAdapter(new ArrayList<>(),new InterventionAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Intervention item) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("ID", item.id);
+                startActivity(intent);
+            }
         });
         recyclerView.setAdapter(adapter);
 
