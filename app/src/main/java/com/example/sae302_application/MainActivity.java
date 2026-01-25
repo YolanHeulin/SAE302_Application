@@ -59,22 +59,22 @@ public class MainActivity extends AppCompatActivity
                 loadData();
             }
         });
+        findViewById(R.id.btnAdd).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AjoutIntervention.class);
+            startActivity(intent);
+        });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         loadData();
     }
-
-    // Méthode appelée lors du clic sur un item du RecyclerView
     @Override
     public void onItemClick(Intervention item) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         intent.putExtra("ID", item.id);
         startActivity(intent);
     }
-
     private void loadData() {
         List<Intervention> all = DataRepository.interventions;
         List<Intervention> filtered = new ArrayList<Intervention>();
@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity
                 filtered.add(i);
             }
         }
-
         // Tri par priorité
         Collections.sort(filtered, new Comparator<Intervention>() {
             @Override
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity
         if (adapter != null) {
             adapter.updateList(filtered);
         }
-
         if (tvStats != null) {
             tvStats.setText(filtered.size() + " intervention(s)");
         }

@@ -11,36 +11,29 @@ import java.util.List;
 public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapter.ViewHolder> {
     private List<Intervention> list;
     private final OnItemClickListener listener;
-
     public interface OnItemClickListener { void onItemClick(Intervention item); }
-
     public InterventionAdapter(List<Intervention> list, OnItemClickListener listener) {
         this.list = list;
         this.listener = listener;
     }
-
     public void updateList(List<Intervention> newList) {
         this.list = newList;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Attention : vérifiez que le fichier XML s'appelle bien item_intervention
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_intervention, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Intervention item = list.get(position);
         holder.tvTitle.setText(item.titre);
-        holder.tvTime.setText(item.heure);
+        holder.tvTime.setText("📅 " + item.date + " à " + item.heure);
         holder.tvSite.setText(item.site.nom);
         holder.tvStatus.setText(item.statut);
 
-        // Gestion des couleurs de priorité
         int color = Color.GREEN;
         if ("Haute".equals(item.priorite)) color = Color.RED;
         else if ("Moyenne".equals(item.priorite)) color = Color.rgb(255, 165, 0); // Orange
@@ -48,17 +41,13 @@ public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapte
         holder.viewPriority.setBackgroundColor(color);
         holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
-
     @Override
     public int getItemCount() { return list != null ? list.size() : 0; }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvTime, tvSite, tvStatus;
         View viewPriority;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Ces IDs doivent exister dans item_intervention.xml
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvTime = itemView.findViewById(R.id.tvTime);
             tvSite = itemView.findViewById(R.id.tvSite);

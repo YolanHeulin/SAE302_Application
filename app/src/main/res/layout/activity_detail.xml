@@ -112,16 +112,49 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView android:id="@+id/siteAdresse" android:text="Adresse" android:textColor="#555555" android:layout_marginTop="4dp" android:layout_marginBottom="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/siteAdresse"
+                        android:text="Adresse"
+                        android:textColor="#555555"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginBottom="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEEEE"
+                        android:layout_marginBottom="12dp"/>
 
-                    <TextView android:id="@+id/siteContact" android:text="Contact" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/siteTel" android:text="06..." android:textColor="#2E7D32" android:textStyle="bold" android:layout_marginTop="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/siteContact"
+                        android:text="Contact"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/siteTel"
+                        android:text="06..."
+                        android:textColor="#2E7D32"
+                        android:textStyle="bold"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <TextView android:text="TECHNICIEN AFFECTÉ" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginBottom="6dp" android:layout_marginStart="4dp"/>
+            <TextView
+                android:text="TECHNICIEN AFFECTÉ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#8E8E93"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="4dp"/>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,13 +182,34 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginStart="16dp">
-                        <TextView android:id="@+id/techNom" android:text="Nom Tech" android:textStyle="bold" android:textColor="#000000" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                        <TextView android:id="@+id/techTel" android:text="06..." android:textColor="#3F51B5" android:layout_marginTop="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/techNom"
+                            android:text="Nom Tech"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/techTel"
+                            android:text="06..."
+                            android:textColor="#3F51B5"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <TextView android:text="DÉTAILS MISSION" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginBottom="6dp" android:layout_marginStart="4dp"/>
+            <TextView
+                android:text="DÉTAILS MISSION"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#8E8E93"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="4dp"/>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,19 +217,75 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                    <TextView android:id="@+id/detailDesc" android:text="..." android:textSize="15sp" android:textColor="#333333" android:layout_marginBottom="16dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/detailDesc"
+                        android:text="..."
+                        android:textSize="15sp"
+                        android:textColor="#333333"
+                        android:layout_marginBottom="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView android:text="Matériel requis :" android:textStyle="bold" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/detailMat" android:text="..." android:textStyle="italic" android:textColor="#E64A19" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="Matériel requis :"
+                        android:textStyle="bold"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/detailMat"
+                        android:text="..."
+                        android:textStyle="italic"
+                        android:textColor="#E64A19"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <TextView android:text="METTRE À JOUR LE STATUT" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textSize="12sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginBottom="10dp"/>
+            <TextView
+                android:text="METTRE À JOUR LE STATUT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#8E8E93"
+                android:layout_marginBottom="10dp"/>
 
-            <Button android:id="@+id/btnStatusPlan" android:text="Marquer comme Planifiée" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-            <Button android:id="@+id/btnStatusEnc" android:text="Démarrer l'intervention" android:backgroundTint="#FF9800" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-            <Button android:id="@+id/btnStatusTerm" android:text="Valider la fin de chantier" android:backgroundTint="#4CAF50" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnStatusPlan"
+                android:text="Marquer comme Planifiée"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnStatusEnc"
+                android:text="Démarrer l'intervention"
+                android:backgroundTint="#FF9800"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnStatusTerm"
+                android:text="Valider la fin de chantier"
+                android:backgroundTint="#4CAF50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🗑️ Supprimer l'intervention"
+                android:backgroundTint="#D32F2F"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="30dp"/>
 
         </LinearLayout>
     </ScrollView>

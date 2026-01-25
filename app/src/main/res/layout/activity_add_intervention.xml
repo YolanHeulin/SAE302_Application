@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1A237E"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="←"
+            android:textSize="28sp"
+            android:textColor="#FFFFFF"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nouvelle Intervention"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="#F5F5F5"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Général"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/editTitre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Titre (ex: Panne Alarme)"/>
+
+            <EditText
+                android:id="@+id/editDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date (ex: 25/05/2024)"
+                android:inputType="date"/>
+
+            <EditText
+                android:id="@+id/editHeure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Horaire (ex: 08:00 - 10:00)"/>
+
+            <EditText
+                android:id="@+id/editDuree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Durée en min (ex: 90)"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/editPriorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Priorité (Haute, Moyenne, Basse)"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Technicien"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTechNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom du technicien"/>
+
+            <EditText
+                android:id="@+id/editTechTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Téléphone technicien"
+                android:inputType="phone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Site Client"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editSiteNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom du site"/>
+
+            <EditText
+                android:id="@+id/editSiteAdr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adresse complète"/>
+
+            <EditText
+                android:id="@+id/editSiteContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom contact sur place"/>
+
+            <EditText
+                android:id="@+id/editSiteTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Téléphone contact"
+                android:inputType="phone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Détails"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description du problème"
+                android:lines="3"/>
+
+            <EditText
+                android:id="@+id/editMateriel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Matériel requis"/>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enregistrer l'intervention"
+                android:backgroundTint="#1A237E"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="40dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
