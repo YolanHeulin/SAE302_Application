@@ -46,7 +46,13 @@ public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapte
         else if ("Moyenne".equals(item.priorite)) color = Color.rgb(255, 165, 0); // Orange
 
         holder.viewPriority.setBackgroundColor(color);
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(item);
+            }
+        });
+
     }
 
     @Override
