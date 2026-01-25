@@ -40,6 +40,8 @@ public class DetailActivity extends AppCompatActivity {
 
         // Configuration des boutons d'actions
         setupStatusButton(R.id.btnStatusPlan, "Planifiée");
+        setupStatusButton(R.id.btnStatusTerm, "Annulée");
+        setupStatusButton(R.id.btnStatusTerm, "Reportée");
         setupStatusButton(R.id.btnStatusEnc, "En cours");
         setupStatusButton(R.id.btnStatusTerm, "Terminée");
     }
