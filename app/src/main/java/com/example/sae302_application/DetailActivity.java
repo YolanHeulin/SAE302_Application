@@ -1,28 +1,27 @@
 package com.example.sae302_application;
-
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailActivity extends AppCompatActivity {
-
     private Intervention intervention;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
         // Bouton Retour
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+        findViewById(R.id.btnBack).setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                finish();
+            }
+        });
 
         int id = getIntent().getIntExtra("ID", -1);
         intervention = DataRepository.getById(id);
 
-        // Affichage des détails dans l'intervention choisi
+        // Affichage des détails dans l'intervention choisie
         if (intervention != null) {
             ((TextView) findViewById(R.id.detailTitle)).setText(intervention.titre);
             ((TextView) findViewById(R.id.detailHeure)).setText("📅 " + intervention.date + " à " + intervention.heure);
@@ -44,22 +43,35 @@ public class DetailActivity extends AppCompatActivity {
 
         // Bouton Supprimer
         Button btnDelete = findViewById(R.id.btnDelete);
-        btnDelete.setOnClickListener(v -> {
-            if (intervention != null) {
-                DataRepository.deleteIntervention(this, intervention);
-                Toast.makeText(this, "Intervention supprimée", Toast.LENGTH_SHORT).show();
-                finish(); // ferme la page
+        btnDelete.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                if (intervention != null) {
+                    DataRepository.deleteIntervention(DetailActivity.this, intervention);
+                    Toast.makeText(DetailActivity.this, "Intervention supprimée", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
-
     }
+    private void setupStatusButton(int btnId, final String newStatus) {
+        // Méthode utilitaire permettant d’associer un comportement de changement de statut à un bouton
+        findViewById(btnId).setOnClickListener(new android.view.View.OnClickListener() {
+            // Récupère le bouton via son ID et lui attache un écouteur de clic classique avec une classe anonyme.
 
-    private void setupStatusButton(int btnId, String newStatus) {
-        findViewById(btnId).setOnClickListener(v -> {
-            if (intervention != null) {
-                intervention.statut = newStatus;
-                Toast.makeText(this, "Statut : " + newStatus, Toast.LENGTH_SHORT).show();
-                finish();
+            @Override
+            public void onClick(android.view.View v) {
+                // Méthode exécutée automatiquement lorsque l’utilisateur clique sur ce bouton
+
+                if (intervention != null) { // Vérifie qu’une intervention est bien chargée avant de modifier ses données.
+                    intervention.statut = newStatus;
+                    // Met à jour le statut de l’intervention avec la valeur passée en paramètre.
+
+                    Toast.makeText(DetailActivity.this, "Statut : " + newStatus, Toast.LENGTH_SHORT).show();
+                    // Affiche un message visuel confirmant le changement de statut.
+
+                    finish(); // Ferme l’activité pour revenir à l’écran précédent après la modification.
+                }
             }
         });
     }

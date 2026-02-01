@@ -15,14 +15,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState); // Appel de la méthode parent pour initialiser correctement l’activité Android
 
-        DataRepository.loadFromCsv(this);
+        setContentView(R.layout.activity_main); // Charge le layout XML associé à l’écran principal
+        DataRepository.loadFromCsv(this); // Charge les interventions depuis le fichier CSV si ce n’est pas déjà fait
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        tvStats = findViewById(R.id.tvStatsTotal);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerView = findViewById(R.id.recyclerView); // Récupère le RecyclerView affichant la liste des interventions
+        tvStats = findViewById(R.id.tvStatsTotal); // Récupère la zone de texte affichant le nombre total d’interventions filtrées
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Définit un LayoutManager vertical pour organiser les éléments du RecyclerView
 
         ArrayList<Intervention> listeInterventions = new ArrayList<Intervention>(); // Création d'un ArrayList d'interventions vide
         adapter = new InterventionAdapter(listeInterventions, this); // Création de l'objet adapter, "this" représente MainActivity
@@ -71,28 +72,33 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     protected void onResume() {
-        super.onResume();
-        loadData();
+        super.onResume(); // Méthode appelée à chaque retour sur l’activité (ex : après ajout d’une intervention)
+        loadData();// Recharge les données pour mettre à jour la liste affichée
     }
     @Override
-    public void onItemClick(Intervention item) {
-        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        intent.putExtra("ID", item.id);
-        startActivity(intent);
+    public void onItemClick(Intervention item) { // Méthode déclenchée lorsqu’un élément du RecyclerView est cliqué
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);// Prépare la navigation vers l’écran de détails
+        intent.putExtra("ID", item.id); // Ajoute l’ID de l’intervention sélectionnée pour l’afficher dans l’autre activité
+        startActivity(intent); // Lance l’activité de détails
     }
-    private void loadData() {
-        List<Intervention> all = DataRepository.interventions;
-        List<Intervention> filtered = new ArrayList<Intervention>();
+    private void loadData() {// Méthode responsable du filtrage, tri et mise à jour de la liste affichée
 
-        for (Intervention i : all) {
+        List<Intervention> all = DataRepository.interventions; // Récupère toutes les interventions chargées en mémoire
+        List<Intervention> filtered = new ArrayList<Intervention>(); // Liste temporaire contenant uniquement les interventions correspondant au filtre actif
+
+        for (Intervention i : all) { // Parcourt toutes les interventions
+
             if (currentFilter.equals("Toutes") || i.statut.equals(currentFilter)) {
                 filtered.add(i);
+                // Ajoute l’intervention si elle correspond au filtre sélectionné
             }
         }
+
         // Tri par priorité
         Collections.sort(filtered, new Comparator<Intervention>() {
             @Override
             public int compare(Intervention o1, Intervention o2) {
+                // Compare les valeurs de priorité pour trier du plus urgent au moins urgent
                 return Integer.compare(
                         o2.getPrioriteValue(),
                         o1.getPrioriteValue()
@@ -102,9 +108,12 @@ public class MainActivity extends AppCompatActivity
 
         if (adapter != null) {
             adapter.updateList(filtered);
+            // Met à jour l’adapter avec la liste filtrée et triée
         }
+
         if (tvStats != null) {
             tvStats.setText(filtered.size() + " intervention(s)");
+            // Affiche le nombre d’interventions correspondant au filtre
         }
     }
 }
