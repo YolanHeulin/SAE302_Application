@@ -24,15 +24,17 @@ public class MainActivity extends AppCompatActivity
         tvStats = findViewById(R.id.tvStatsTotal);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new InterventionAdapter(new ArrayList<Intervention>(), this);
-        recyclerView.setAdapter(adapter);
+        ArrayList<Intervention> listeInterventions = new ArrayList<Intervention>(); // Création d'un ArrayList d'interventions vide
+        adapter = new InterventionAdapter(listeInterventions, this); // Création de l'objet adapter, "this" représente MainActivity
+        recyclerView.setAdapter(adapter); // Affectation de l'adapter au RecyclerView
 
         // Bouton 1
+        // Récup le bouton avec l'ID btnAll dans le layout, ajoute un écouteur et crée une classe anonyme
         findViewById(R.id.btnAll).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                currentFilter = "Toutes";
-                loadData();
+            public void onClick(View v) { // Méthode appelée automatiquement au moment du clic
+                currentFilter = "Toutes"; // Change le filtre  du RecyclerView
+                loadData(); // Relance le chargement des données
             }
         });
         // Bouton 2
@@ -59,9 +61,12 @@ public class MainActivity extends AppCompatActivity
                 loadData();
             }
         });
-        findViewById(R.id.btnAdd).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AjoutIntervention.class);
-            startActivity(intent);
+        findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AjoutIntervention.class);
+                startActivity(intent);
+            }
         });
     }
     @Override

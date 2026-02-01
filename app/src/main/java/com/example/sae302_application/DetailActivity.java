@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailActivity extends AppCompatActivity {
@@ -38,7 +39,6 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         // Boutons de Statut
-        setupStatusButton(R.id.btnStatusPlan, "Planifiée");
         setupStatusButton(R.id.btnStatusEnc, "En cours");
         setupStatusButton(R.id.btnStatusTerm, "Terminée");
 
@@ -53,6 +53,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
     }
+
     private void setupStatusButton(int btnId, String newStatus) {
         findViewById(btnId).setOnClickListener(v -> {
             if (intervention != null) {

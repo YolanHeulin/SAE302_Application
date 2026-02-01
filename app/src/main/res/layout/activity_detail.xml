@@ -259,11 +259,6 @@
                 android:layout_marginBottom="10dp"/>
 
             <Button
-                android:id="@+id/btnStatusPlan"
-                android:text="Marquer comme Planifiée"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
                 android:id="@+id/btnStatusEnc"
                 android:text="Démarrer l'intervention"
                 android:backgroundTint="#FF9800"

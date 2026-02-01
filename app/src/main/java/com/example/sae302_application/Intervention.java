@@ -1,17 +1,10 @@
 package com.example.sae302_application;
-
 import java.io.Serializable;
 
 public class Intervention implements Serializable {
     public int id;
-    public String date; // <--- NOUVEAU CHAMP
-    public String titre;
-    public String heure;
+    public String date, titre, heure, statut, priorite, description, materiel;
     public int dureeMin;
-    public String statut;
-    public String priorite;
-    public String description;
-    public String materiel;
     public Technicien technicien;
     public Site site;
 

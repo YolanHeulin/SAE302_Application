@@ -2,10 +2,7 @@ package com.example.sae302_application;
 import java.io.Serializable;
 public class Site implements Serializable {
     public int id;
-    public String nom;
-    public String adresse;
-    public String contactNom;
-    public String contactTel;
+    public String nom, adresse, contactNom, contactTel;
 
     public Site(int id, String nom, String adresse, String contactNom, String contactTel) {
         this.id = id;

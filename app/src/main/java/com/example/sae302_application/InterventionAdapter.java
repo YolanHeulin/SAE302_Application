@@ -36,13 +36,15 @@ public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapte
 
         int color = Color.GREEN;
         if ("Haute".equals(item.priorite)) color = Color.RED;
-        else if ("Moyenne".equals(item.priorite)) color = Color.rgb(255, 165, 0); // Orange
+        else if ("Moyenne".equals(item.priorite)) color = Color.YELLOW;
 
         holder.viewPriority.setBackgroundColor(color);
         holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
     @Override
-    public int getItemCount() { return list != null ? list.size() : 0; }
+    public int getItemCount() {
+        return list != null ? list.size() : 0;
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvTime, tvSite, tvStatus;
         View viewPriority;
