@@ -5,11 +5,11 @@ import java.util.*;
 public class DataRepository {
     public static List<Intervention> interventions = new ArrayList<>();
     // Liste statique contenant toutes les interventions chargées en mémoire
-    private static final String file_name = "interventions.csv";
+    private static final String FILE_NAME = "interventions.csv";
     public static void loadFromCsv(Context context) {
         if (!interventions.isEmpty()) return; // Vérifie si la liste est vide
 
-        File file = new File(context.getFilesDir(), file_name);
+        File file = new File(context.getFilesDir(), FILE_NAME);
         // Construction d’un objet File pointant vers le fichier CSV dans le stockage interne
 
         if (!file.exists()) {
@@ -82,7 +82,7 @@ public class DataRepository {
                 i.site.contactNom + ";" + i.site.contactTel;
 
         try {
-            File file = new File(context.getFilesDir(), file_name);
+            File file = new File(context.getFilesDir(), FILE_NAME);
             // Récupération du fichier CSV dans le stockage interne
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
@@ -99,10 +99,10 @@ public class DataRepository {
 
     private static void copyAssetsToStorage(Context context) {
         try {
-            InputStream in = context.getAssets().open(file_name);
+            InputStream in = context.getAssets().open(FILE_NAME);
             // Ouverture du fichier CSV situé dans le dossier assets
 
-            File outFile = new File(context.getFilesDir(), file_name);
+            File outFile = new File(context.getFilesDir(), FILE_NAME);
             // Création du fichier de destination dans le stockage interne
 
             OutputStream out = new FileOutputStream(outFile);
@@ -133,7 +133,7 @@ public class DataRepository {
     }
     public static void deleteIntervention(Context context, Intervention interventionToDelete) {
         interventions.remove(interventionToDelete);  // Suppression de l’intervention dans la liste en mémoire
-        File file = new File(context.getFilesDir(), file_name); // Récupération du fichier CSV existant
+        File file = new File(context.getFilesDir(), FILE_NAME); // Récupération du fichier CSV existant
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
@@ -149,7 +149,7 @@ public class DataRepository {
                 writer.write(csvLine); // Écriture de la ligne CSV
                 writer.newLine(); // Ajout d’un saut de ligne
             }
-            writer.close(); // Fermeture du flux d’écriture.
+            writer.close(); // Fermeture du flux d’écriture
 
         } catch (Exception e) {
             e.printStackTrace();
